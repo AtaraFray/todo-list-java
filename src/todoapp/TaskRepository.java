@@ -35,8 +35,15 @@ public class TaskRepository {
 	
 
 	public void delete(int taskId) {
-		tasksList.remove(taskId);
-		saveTasksToFile();
+	    Task task = getTaskById(taskId);
+		if (task != null) {
+			tasksList.remove(taskId);
+			saveTasksToFile();
+			System.out.println("Succsecful to delete ");
+		}
+		
+		// בדיקה
+		
 	}
 
 	public Task getTaskById(int taskId) {
@@ -118,7 +125,8 @@ public class TaskRepository {
 	}
 
 	// save tasks to file
-	private void saveTasksToFile() {
+//	private 
+	public void saveTasksToFile() {
 		try {
 			StringBuilder json = new StringBuilder();
 			json.append("[");

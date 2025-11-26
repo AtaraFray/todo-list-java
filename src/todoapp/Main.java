@@ -7,8 +7,12 @@ public class Main {
 
 		// בדיקת פונקציות curd
 		TaskRepository taskes = new TaskRepository();
-		Task task = new Task(5, "finish task", "finisn java task", Status.IN_PROGRESS);
+		Task task = new Task(5, "finish task", "finisn java task", Status.DONE);
 		taskes.addNewTask(task);
+		System.out.println(taskes.updateTask(5, task));
+//		taskes.delete(5);
+		taskes.saveTasksToFile();
+		
 	}
 
 }
