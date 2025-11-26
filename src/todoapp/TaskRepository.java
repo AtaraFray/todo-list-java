@@ -12,8 +12,8 @@ public class TaskRepository {
 	private static String dataFilePath = "data/tasksList.json";
 
 	public TaskRepository() {
-		this.tasksList = loaTtasksFromFile();
-
+		this.tasksList = loadTtasksFromFile();
+		
 	}
 	// ------------------------------------
 	// API methods - add , update and delete .
@@ -48,7 +48,7 @@ public class TaskRepository {
 //--------------------------------------------------
 
 //load tasks From File
-	public static Map<Integer, Task> loaTtasksFromFile() {
+	public static Map<Integer, Task> loadTtasksFromFile() {
 
 		Map<Integer, Task> data = new HashMap<>();
 
@@ -61,6 +61,10 @@ public class TaskRepository {
 
 			String json = new String(Files.readAllBytes(file.toPath())).trim();
 			json = json.substring(1, json.length() - 1).trim();
+			
+			if (json.isEmpty() || json.equals("[]")) {
+	            return data;
+	        }
 			String[] jsonObjects = json.split("},");
 
 			for (String object : jsonObjects) {
@@ -71,7 +75,8 @@ public class TaskRepository {
 				String title = "";
 				String description = "";
 				Status status = null;
-
+               
+				
 				String[] fields = object.split(",");
 
 				for (String field : fields) {
