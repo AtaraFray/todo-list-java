@@ -25,7 +25,7 @@ public class TaskService {
 
 	// find task by text from user
 	public Task findTaskByText(String text) {
-		if (text == null || text == "") {
+		if (text == null || text.isEmpty()) {
 			return null;
 		}
 		String changText = text.toLowerCase();

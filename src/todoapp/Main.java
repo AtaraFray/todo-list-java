@@ -71,17 +71,17 @@ public class Main {
 		String descriptionToEdit = scanner.nextLine();
 
 		System.out.println("---------------------------------------");
-		Task UpdateTask = new Task(taskId, title, description);
+		Task UpdateTask = new Task(taskIdToEdit, titleToEdit, descriptionToEdit);
 		addNewTask(newTask, taskRepository);
 		// delete task
 		System.out.println("enter task to delete");
 		int taskIdToDelete = scanner.nextInt();
-		deleteTask(taskId , taskRepository);
+		deleteTask(taskIdToDelete , taskRepository);
 		
 	    // search task 
 		System.out.println("enter description or title");
 		String textToSearch = scanner.nextLine();
-
+		searchTask(textToSearch,service);
 		
 		
 		
