@@ -21,11 +21,13 @@ public class TaskRepository {
 
 	public void addNewTask(Task task) {
 		tasksList.put(task.getId(), task);
+		saveTasksToFile();
 	}
 
 	public boolean updateTask(int taskId, Task updatedTask) {
 		if (tasksList.containsKey(taskId)) {
 			tasksList.put(taskId, updatedTask);
+			saveTasksToFile();
 			return true;
 		}
 		return false;
@@ -33,13 +35,12 @@ public class TaskRepository {
 
 	public void delete(int taskId) {
 		tasksList.remove(taskId);
+		saveTasksToFile();
 	}
 
 	public Task getTaskById(int taskId) {
 		return tasksList.get(taskId);
 	}
-
-
 
 //--------------------------------------------------
 // file handle method - load data ,
@@ -51,7 +52,7 @@ public class TaskRepository {
 		Map<Integer, Task> data = new HashMap<>();
 
 		File file = new File(dataFilePath);
-		
+
 		if (!file.exists())
 			return null;
 
@@ -62,7 +63,7 @@ public class TaskRepository {
 			String[] jsonObjects = json.split("},");
 
 			for (String object : jsonObjects) {
-				
+
 				object = object.replace("{", "").replace("}", "").trim();
 
 				int id = 0;
@@ -96,7 +97,7 @@ public class TaskRepository {
 					}
 
 				}
-                
+
 				Task task = new Task(id, title, description, status);
 				data.put(task.getId(), task);
 
@@ -109,36 +110,34 @@ public class TaskRepository {
 
 		return data;
 	}
+
 	// save tasks to file
 	private void saveTasksToFile() {
 		try {
-	        StringBuilder json = new StringBuilder();
-	        json.append("[");
-	        // מעבר של כל אוביקט ושדותיו
+			StringBuilder json = new StringBuilder();
+			json.append("[");
+			// מעבר של כל אוביקט ושדותיו
 			boolean firstObject = true;
-			
-	        for (Task  task : tasksList.values()) {
-	        	if (!firstObject) 
-	        		json.append(",");
- 
-	        		firstObject = false;
-	        		
-	        		 json.append("{")
-	                    .append("\"id\":").append(task.getId()).append(",")
-	                    .append("\"title\":\"").append(task.getTitle()).append("\",")
-	                    .append("\"description\":\"").append(task.getDescription()).append("\",")
-	                    .append("\"status\":\"").append(task.getStatus()).append("\"")
-	                    .append("}");
-	        		 
+
+			for (Task task : tasksList.values()) {
+				if (!firstObject)
+					json.append(",");
+
+				firstObject = false;
+
+				json.append("{").append("\"id\":").append(task.getId()).append(",").append("\"title\":\"")
+						.append(task.getTitle()).append("\",").append("\"description\":\"")
+						.append(task.getDescription()).append("\",").append("\"status\":\"").append(task.getStatus())
+						.append("\"").append("}");
+
 			}
-	        json.append("]");
-	        Files.write(new File(dataFilePath).toPath(), json.toString().getBytes());
+			json.append("]");
+			Files.write(new File(dataFilePath).toPath(), json.toString().getBytes());
 
 		} catch (Exception e) {
 			System.err.println("Failed to write tasks: " + e.getMessage());
 		}
-		
+
 	}
-	
 
 }
