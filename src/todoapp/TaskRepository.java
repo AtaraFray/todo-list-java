@@ -52,9 +52,6 @@ public class TaskRepository {
 
 		File file = new File(dataFilePath);
 		
-         // בדיקה
-		System.out.println(file.getPath());
-
 		if (!file.exists())
 			return null;
 
@@ -101,10 +98,7 @@ public class TaskRepository {
 				}
                 
 				Task task = new Task(id, title, description, status);
-				// בדיקה 
-				System.out.println(task.toString());
 				data.put(task.getId(), task);
-				// בדיקה בקונסול
 
 			}
 
@@ -115,5 +109,36 @@ public class TaskRepository {
 
 		return data;
 	}
+	// save tasks to file
+	private void saveTasksToFile() {
+		try {
+	        StringBuilder json = new StringBuilder();
+	        json.append("[");
+	        // מעבר של כל אוביקט ושדותיו
+			boolean firstObject = true;
+			
+	        for (Task  task : tasksList.values()) {
+	        	if (!firstObject) 
+	        		json.append(",");
+ 
+	        		firstObject = false;
+	        		
+	        		 json.append("{")
+	                    .append("\"id\":").append(task.getId()).append(",")
+	                    .append("\"title\":\"").append(task.getTitle()).append("\",")
+	                    .append("\"description\":\"").append(task.getDescription()).append("\",")
+	                    .append("\"status\":\"").append(task.getStatus()).append("\"")
+	                    .append("}");
+	        		 
+			}
+	        json.append("]");
+	        Files.write(new File(dataFilePath).toPath(), json.toString().getBytes());
+
+		} catch (Exception e) {
+			System.err.println("Failed to write tasks: " + e.getMessage());
+		}
+		
+	}
+	
 
 }
