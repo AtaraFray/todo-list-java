@@ -1,5 +1,1 @@
-[
-{"id":3,"title":"finish task","description":"finisn java task","status":"NEW"},
-{"id":2,"title":"finish task","description":"finisn java task","status":"DONE"},
-{"id":1,"title":"finish task","description":"finisn java task","status":"IN_PROGRESS"}
-]
+[{"id":1,"title":"finish task","description":"finisn java task","status":"IN_PROGRESS"},{"id":2,"title":"finish task","description":"finisn java task","status":"DONE"},{"id":3,"title":"finish task","description":"finisn java task","status":"NEW"},{"id":7,"title":"Clean","description":"To Clean my house","status":"NEW"}]

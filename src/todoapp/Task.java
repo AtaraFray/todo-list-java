@@ -1,11 +1,9 @@
 package todoapp;
 
-enum Status {
-	NEW, IN_PROGRESS, DONE
-}
-
 public class Task {
-
+	
+	
+	 
 	// Fields
 	private int id;
 	private String title;
@@ -13,6 +11,13 @@ public class Task {
 	private Status status;
 
 	// c-tor
+	public Task(int id, String title, String description) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.status = status.NEW;
+	}
+	
 	public Task(int id, String title, String description, Status status) {
 		this.id = id;
 		this.title = title;
@@ -45,12 +50,17 @@ public class Task {
 		this.description = description;
 	}
 
+
 	public Status getStatus() {
 		return status;
 	}
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+    @Override
+	public String toString() {
+		return "task | id : " + id + "| title:" + title + "| description : " + description + "| status : " + status + "]";
 	}
 
 }
