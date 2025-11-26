@@ -1,5 +1,7 @@
 package todoapp;
 
+import java.security.PublicKey;
+
 public class TaskService {
 
 	private final TaskRepository repository;
@@ -14,13 +16,11 @@ public class TaskService {
 		if (task != null) {
 			task.setStatus(Status.DONE);
 			this.repository.updateTask(taskId, task);
-		}
-		else {
+		} else {
 			throw new RuntimeException("Task not found");
 		}
-		
-		
-
+ 
+	
 	}
 
 }
