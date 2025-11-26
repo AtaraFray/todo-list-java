@@ -1,5 +1,6 @@
 package todoapp;
 
+import java.io.Console;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public class TaskRepository {
 	private static String dataFilePath = "data/tasksList.json";
 
 	public TaskRepository() {
-//		this.tasksList = loadDataFromFile();
+		this.tasksList = loaTtasksFromFile();
 
 	}
 	// ------------------------------------
@@ -50,7 +51,8 @@ public class TaskRepository {
 		Map<Integer, Task> data = new HashMap<>();
 
 		File file = new File(dataFilePath);
-
+		
+         // בדיקה
 		System.out.println(file.getPath());
 
 		if (!file.exists())
@@ -97,9 +99,12 @@ public class TaskRepository {
 					}
 
 				}
-
+                
 				Task task = new Task(id, title, description, status);
+				// בדיקה 
+				System.out.println(task.toString());
 				data.put(task.getId(), task);
+				// בדיקה בקונסול
 
 			}
 
