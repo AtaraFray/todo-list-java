@@ -24,6 +24,9 @@ public class Main {
 		taskRepository.delete(taskId);
 	}
 	
+	public static Task searchTask(String text , TaskService service) {
+		return service.findTaskByText(text);
+	}
 	public static void main(String[] args) {
 
 		// ------------------------------------
@@ -74,8 +77,15 @@ public class Main {
 		System.out.println("enter task to delete");
 		int taskIdToDelete = scanner.nextInt();
 		deleteTask(taskId , taskRepository);
-	}
+		
+	    // search task 
+		System.out.println("enter description or title");
+		String textToSearch = scanner.nextLine();
 
-	;
+		
+		
+		
+	}
+ 
 
 }
