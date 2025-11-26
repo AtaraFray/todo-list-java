@@ -1,56 +1,56 @@
 package todoapp;
 
-enum Status{
-	NEW, 
-	IN_PROGRESS,
-	DONE
+enum Status {
+	NEW, IN_PROGRESS, DONE
 }
+
 public class Task {
-	
+
 	// Fields
-	private int Id ;
-	private String Title ; 
-	private String Description ; 
-	private Status status ;
-	
+	private int id;
+	private String title;
+	private String description;
+	private Status status;
+
 	// c-tor
 	public Task(int id, String title, String description, Status status) {
-		Id = id;
-		Title = title;
-		Description = description;
+		this.id = id;
+		this.title = title;
+		this.description = description;
 		this.status = status;
 	}
-	
+
 	// getters and setters
 	public int getId() {
-		return Id;
+		return id;
 	}
+
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
+
 	public String getTitle() {
-		return Title;
+		return title;
 	}
+
 	public void setTitle(String title) {
-		Title = title;
+		this.title = title;
 	}
+
 	public String getDescription() {
-		return Description;
+		return description;
 	}
+
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
+
 	public Status getStatus() {
 		return status;
 	}
+
 	public void setStatus(Status status) {
 		this.status = status;
-	} 
-		
-		
-
-	
-	
-	
+	}
 
 }
