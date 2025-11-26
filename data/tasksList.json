@@ -1,1 +1,5 @@
-[{"id":3,"title":"finish task","description":"finisn java task","status":"DONE"}]
+[
+{"id":3,"title":"finish task","description":"finisn java task","status":"NEW"},
+{"id":2,"title":"finish task","description":"finisn java task","status":"DONE"},
+{"id":1,"title":"finish task","description":"finisn java task","status":"IN_PROGRESS"}
+]

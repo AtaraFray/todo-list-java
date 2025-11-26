@@ -1,6 +1,5 @@
 package todoapp;
 
-import java.io.Console;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class TaskRepository {
 	}
 
 	public Map<Integer, Task> listAll() {
-		return this.tasksList;
+		return loadTasksFromFile();
 	}
 
 //--------------------------------------------------

@@ -1,6 +1,8 @@
 package todoapp;
 
-import java.security.PublicKey;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class TaskService {
 
@@ -20,21 +22,30 @@ public class TaskService {
 			throw new RuntimeException("Task not found");
 		}
 	}
-		public Task findTaskByText (String text) {
-			if (text == null || text == "") {
-				return  null ;
-			}
-			String changText = text.toLowerCase();
-			    return
-				repository.listAll().values().stream()
-	            .filter(t -> (t.getTitle() != null && t.getTitle().toLowerCase().contains(changText)) ||
-	            		t.getDescription() != null && t.getDescription().toLowerCase().contains(changText))
-	            .findFirst()
-	            .orElse(null);
-			
-			
+
+	// find task by text from user
+	public Task findTaskByText(String text) {
+		if (text == null || text == "") {
+			return null;
 		}
-	
+		String changText = text.toLowerCase();
+		return repository.listAll().values().stream()
+				.filter(t -> (t.getTitle() != null && t.getTitle().toLowerCase().contains(changText))
+						|| t.getDescription() != null && t.getDescription().toLowerCase().contains(changText))
+				.findFirst().orElse(null);
+
 	}
 
+	// sort all tasks by status when new first ...
+	public List<Task> sortTaskByStatus() {
+		TaskRepository repository = new TaskRepository();
+		Map<Integer, Task> tasks = repository.listAll();
+		List<Task> sortList = new ArrayList<>();
+		for (Task task : tasks.values()) {
+			sortList.add(task);
+		}
+		sortList.sort((t1, t2) -> t1.getStatus().compareTo(t2.getStatus()));
+		return sortList;
+	}
 
+}
