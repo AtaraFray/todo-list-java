@@ -19,8 +19,22 @@ public class TaskService {
 		} else {
 			throw new RuntimeException("Task not found");
 		}
- 
+	}
+		public Task findTaskByText (String text) {
+			if (text == null || text == "") {
+				return  null ;
+			}
+			String changText = text.toLowerCase();
+			    return
+				repository.listAll().values().stream()
+	            .filter(t -> (t.getTitle() != null && t.getTitle().toLowerCase().contains(changText)) ||
+	            		t.getDescription() != null && t.getDescription().toLowerCase().contains(changText))
+	            .findFirst()
+	            .orElse(null);
+			
+			
+		}
 	
 	}
 
-}
+

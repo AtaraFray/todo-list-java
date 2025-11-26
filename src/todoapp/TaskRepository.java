@@ -34,21 +34,20 @@ public class TaskRepository {
 	}
 
 	public void delete(int taskId) {
-<<<<<<< HEAD
 		Task task = getTaskById(taskId);
 		if (task != null) {
 			tasksList.remove(taskId);
 			saveTasksToFile();
 		}
 
-=======
-		tasksList.remove(taskId);
-		saveTasksToFile();
->>>>>>> 3cf57ee (Add saveTasksToFile method that writes all tasks to JSON file in TaskRepository class)
 	}
 
 	public Task getTaskById(int taskId) {
 		return tasksList.get(taskId);
+	}
+
+	public Map<Integer, Task> listAll() {
+		return this.tasksList;
 	}
 
 //--------------------------------------------------

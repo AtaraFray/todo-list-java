@@ -6,9 +6,10 @@ public class Main {
 		// TODO Auto-generated method stub
 		TaskRepository repo = new TaskRepository();
 		TaskService service = new TaskService(repo);
-//		service.markTaskDone(3);
-		service.markTaskDone(5);
-
+		Task t = service.findTaskByText("finish task");
+		if (t != null) {
+			t.toString();
+		}
 	}
 
 }
