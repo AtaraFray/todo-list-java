@@ -12,8 +12,8 @@ public class TaskRepository {
 	private static String dataFilePath = "data/tasksList.json";
 
 	public TaskRepository() {
-		this.tasksList = loadTtasksFromFile();
-		
+		this.tasksList = loadTasksFromFile();
+
 	}
 	// ------------------------------------
 	// API methods - add , update and delete .
@@ -29,21 +29,17 @@ public class TaskRepository {
 			tasksList.put(taskId, updatedTask);
 			saveTasksToFile();
 			return true;
-		}        
+		}
 		return false;
-	} 
-	
+	}
 
 	public void delete(int taskId) {
-	    Task task = getTaskById(taskId);
+		Task task = getTaskById(taskId);
 		if (task != null) {
 			tasksList.remove(taskId);
 			saveTasksToFile();
-			System.out.println("Succsecful to delete ");
 		}
-		
-		// בדיקה
-		
+
 	}
 
 	public Task getTaskById(int taskId) {
@@ -55,7 +51,7 @@ public class TaskRepository {
 //--------------------------------------------------
 
 //load tasks From File
-	public static Map<Integer, Task> loadTtasksFromFile() {
+	public static Map<Integer, Task> loadTasksFromFile() {
 
 		Map<Integer, Task> data = new HashMap<>();
 
@@ -68,10 +64,10 @@ public class TaskRepository {
 
 			String json = new String(Files.readAllBytes(file.toPath())).trim();
 			json = json.substring(1, json.length() - 1).trim();
-			
+
 			if (json.isEmpty() || json.equals("[]")) {
-	            return data;
-	        }
+				return data;
+			}
 			String[] jsonObjects = json.split("},");
 
 			for (String object : jsonObjects) {
@@ -82,8 +78,7 @@ public class TaskRepository {
 				String title = "";
 				String description = "";
 				Status status = null;
-               
-				
+
 				String[] fields = object.split(",");
 
 				for (String field : fields) {
@@ -125,8 +120,7 @@ public class TaskRepository {
 	}
 
 	// save tasks to file
-//	private 
-	public void saveTasksToFile() {
+	private void saveTasksToFile() {
 		try {
 			StringBuilder json = new StringBuilder();
 			json.append("[");
