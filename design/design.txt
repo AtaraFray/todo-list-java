@@ -1,0 +1,75 @@
+בס"ד
+חלק 3 : Design
+Library Classes :
+    Book
+              Fileds: 
+                   bookId
+                         bookTitle
+                          author
+          Endpoints :
+                 Get all books from server            -     GET (books/)
+                    Get book by bookId                      -     GET  ( books/{id}/)
+                    Add a new book                            -      POST ( books/) 
+                   Edit/update book by bookId       - PUT ( books/{id})
+                   Delete book by BookId               -   DELETE (books/{id})
+            Actions:
+                Search book by prameters .                
+                    Check if the book exist and not borrowed .                
+
+   User
+              Fileds: 
+                   userId
+                         userFullname
+                          amail
+          Endpoints :
+                 Get all users from server            -     GET (users/)
+                    Get user by userId                      -     GET  ( users/{id}/)
+                    Add a new user                            -      POST ( users/) 
+                   Edit/update user by userId       - PUT ( users/{id})
+                   Delete user by userId               -   DELETE (users/{id})
+       Actions:
+                        Check if user return the book on time , if not he need to pay :)         
+Borrow
+              Fileds: 
+                   borrowNumber
+                         bookId
+                          userId
+                         dateOfBorrowed
+                       dateOfReturn
+          Endpoints :
+                  Get all borrow from server                       - GET (Borrows/)      
+                    Borrowed book when user take a book  - POST  (Borrows/)
+                      update borrow dates when user return a book - PoSt
+       Actions:
+                   Search if book exsit borrowed
+ Order and payment
+Classes :
+Order 
+Fileds :
+             orderId
+              userId
+             ammountOfProducts
+             Boolean ifPaid
+Actions :
+              To save order details.
+               To make sure that order paid 
+Paymant 
+Fields : 
+            paymantId
+             orderId
+             ammount
+             wayToPay  - visa , cash ect…….
+Actions :
+              To save the details of payment method .
+               To make sure that order paid 
+
+למחלקת תשלום יש שדה בשם OrderID
+והוא נחשב כמפתח זר - כך שכאשר נוצרת הזמנה נוצר ביחד תשלום 
+וorderId ביחד עם paymentId יוצרים קשר יחודי !
+ 
+                 
+     
+             
+                        
+
+              

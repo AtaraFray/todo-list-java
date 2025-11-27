@@ -46,11 +46,11 @@ public class TaskRepository {
 	}
 
 	public Map<Integer, Task> listAll() {
-		return loadTasksFromFile();
+		return tasksList;
 	}
 
 //--------------------------------------------------
-// file handle method - load data ,
+// file handle method - load data ,and save data
 //--------------------------------------------------
 
 //load tasks From File

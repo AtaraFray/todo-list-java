@@ -83,7 +83,7 @@ public class Main {
 		String textToSearch = scanner.nextLine();
 		searchTask(textToSearch,service);
 		
-		
+        scanner.close();
 		
 	}
  
